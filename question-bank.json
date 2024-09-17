@@ -1,0 +1,788 @@
+[
+    {
+        "question": "What is the value proposition of the AWS Cloud?",
+        "answers": ["High availability", "Elasticity", "Agililty", "All of the above"],
+        "correctAnswer": 3,
+        "explanations": [
+            "This is correct but not the only benefit.", 
+            "This is correct but not the only benefit.", 
+            "This is correct but not the only benefit.", 
+            "This is correct as it encompasses all the listed benefits."
+        ]
+    },
+    {
+        "question": "What are the five pillars of the AWS Well-Architected Framework?",
+        "answers": ["Availability, Integrity, Usability, Maintainability, Scalability", "Operational Excellence, Security, Reliability, Cost Optimization, Sustainability", "Functionality, Interoperability, Security, Efficiency, Sustainability", "Simplicity, Scalability, Security, Robustness, Elasticity"],
+        "correctAnswer": 1,
+        "explanations": [
+            "These are not the correct pillars.", 
+            "This is correct; these five pillars guide AWS architecture best practices.", 
+            "These are not the correct pillars.", 
+            "These are not the correct pillars."
+        ]
+    },
+    {
+        "question": "Which AWS service would be used for database replication during migration?",
+        "answers": ["AWS S3", "AWS EC2", "AWS DynamoDB", "AWS Snowball"],
+        "correctAnswer": 3,
+        "explanations": [
+            "S3 is used for storage, not specifically for database replication.", 
+            "EC2 is for compute capacity but not specifically for database replication.", 
+            "DynamoDB is a NoSQL database, not specifically related to replication tasks.", 
+            "AWS Snowball is used to transport large amounts of data for migration, including database replication."
+        ]
+    },
+    {
+        "question": "What cloud economic concept is similar to a “pay-as-you-go” model?",
+        "answers": ["Fixed costs", "Variable costs", "Economies of scale", "Licensing strategies"],
+        "correctAnswer": 1,
+        "explanations": [
+            "Fixed costs do not vary with usage.", 
+            "Variable costs change based on how much of a service is used, similar to “pay-as-you-go”.", 
+            "Economies of scale refer to cost advantages due to scale, not directly to payment models.", 
+            "Licensing strategies are not directly related to pay-as-you-go."
+        ]
+    },
+    {
+        "question": "What is the AWS Shared Responsibility Model?",
+        "answers": ["A system where AWS is responsible for data and security.", "A system where the customer is responsible for data and security.", "A model where shared responsibilities exist including AWS handling security ‘of’ the cloud and the customer handling security ‘in’ the cloud.", "None of the above."],
+        "correctAnswer": 2,
+        "explanations": [
+            "AWS is responsible for security of the cloud infrastructure but not the content or data within it.", 
+            "The customer is not solely responsible for all aspects of security.", 
+            "This is correct; the responsibility is shared between AWS and the customer.", 
+            "Incorrect."
+        ]
+    },
+    {
+        "question": "Which type of encryption at rest does AWS provide?",
+        "answers": ["Volume", "Instance", "Service", "Data"],
+        "correctAnswer": 0,
+        "explanations": [
+            "AWS provides volume level encryption such as EBS (Elastic Block Store) encryption.", 
+            "Instance level encryption is not commonly a term used for AWS services.", 
+            "Service level encryption is not specific; AWS offers various types of service-specific encryption.", 
+            "Data encryption refers generally to data in all forms, not a specific type."
+        ]
+    },
+    {
+        "question": "Which among the following AWS service aids in compliance?",
+        "answers": ["Amazon Inspector", "AWS Config", "AWS CloudTrail", "All of the above"],
+        "correctAnswer": 3,
+        "explanations": [
+            "Amazon Inspector assesses applications for vulnerabilities.", 
+            "AWS Config tracks configuration changes and compliance.", 
+            "AWS CloudTrail enables governance, compliance, and operational and risk auditing.", 
+            "This is correct because all listed services aid in compliance."
+        ]
+    },
+    {
+        "question": "How does AWS Secrets Manager support security?",
+        "answers": ["Encrypts data", "Stores vital data like keys, passwords, and database credentials securely", "Scans for vulnerabilities", "Provides IAM roles"],
+        "correctAnswer": 1,
+        "explanations": [
+            "Encrypting data is a part of security but not the primary function of Secrets Manager.", 
+            "Correct, AWS Secrets Manager securely stores vital data such as keys and passwords.", 
+            "Scanning for vulnerabilities is not its primary function.", 
+            "Providing IAM roles is handled by AWS IAM, not Secrets Manager."
+        ]
+    },
+    {
+        "question": "Which service can you use to deliver instant notifications?",
+        "answers": ["AWS Config", "Amazon SNS", "Amazon SQS", "AWS Trusted Advisor"],
+        "correctAnswer": 1,
+        "explanations": [
+            "AWS Config tracks resource configurations.", 
+            "Correct, Amazon SNS (Simple Notification Service) delivers instant notifications.", 
+            "Amazon SQS (Simple Queue Service) is used for messaging between distributed systems.", 
+            "AWS Trusted Advisor offers recommendations but not instant notifications."
+        ]
+    },
+    {
+        "question": "What type of load balancer distributes incoming application traffic across multiple EC2 instances?",
+        "answers": ["Application Load Balancer", "Classic Load Balancer", "Network Load Balancer", "Elastic Load Balancer"],
+        "correctAnswer": 0,
+        "explanations": [
+            "Correct, the Application Load Balancer operates at the application layer.", 
+            "Classic Load Balancer supports basic load balancing at both the layer 4 and layer 7 levels.", 
+            "Network Load Balancer is for extreme performance and static IP addresses.", 
+            "Elastic Load Balancer is a type and not descriptive enough to be a correct answer."
+        ]
+    },
+    {
+        "question": "Which among the following is an AWS managed NoSQL database service?",
+        "answers": ["Amazon Redshift", "Amazon Elasticache", "DynamoDB", "Amazon RDS"],
+        "correctAnswer": 2,
+        "explanations": [
+            "Amazon Redshift is a managed data warehouse service.", 
+            "Amazon ElastiCache provides in-memory caching.", 
+            "Correct, DynamoDB is a fully managed NoSQL database service.", 
+            "Amazon RDS is a managed relational database service."
+        ]
+    },
+    {
+        "question": "What is the networking component of a VPC that provides security at the subnet level?",
+        "answers": ["Security groups", "NACLs", "Internet Gateway", "Subnets"],
+        "correctAnswer": 1,
+        "explanations": [
+            "Security groups provide security at the instance level.", 
+            "Correct, Network ACLs (NACLs) provide security at the subnet level.", 
+            "Internet Gateway enables communication between instances in your VPC and the internet.", 
+            "Subnets are a segment of a VPC's IP address range."
+        ]
+    },
+    {
+        "question": "Which AWS service is a fully managed NoSQL database service?",
+        "answers": ["AWS Glacier", "AWS Neptune", "AWS DynamoDB", "AWS ElastiCache"],
+        "correctAnswer": 2,
+        "explanations": [
+            "AWS Glacier is a storage service for archiving data.", 
+            "AWS Neptune is a managed graph database service.", 
+            "Correct, AWS DynamoDB is a fully managed NoSQL database service.", 
+            "AWS ElastiCache provides in-memory caching."
+        ]
+    },
+    {
+        "question": "What is AWS Direct Connect used for in the context of AWS networking?",
+        "answers": ["To connect your physical network to AWS through a dedicated private connection.", "To connect different VPCs together.", "To connect an on-premise server to an EC2 instance.", "None of the above."],
+        "correctAnswer": 0,
+        "explanations": [
+            "Correct, AWS Direct Connect establishes a dedicated network connection.", 
+            "Connecting different VPCs is achieved through VPC peering or Transit Gateway.", 
+            "Connecting on-premise servers to EC2 instances can be done via VPN or Direct Connect but not specifically.", 
+            "Incorrect."
+        ]
+    },
+    {
+        "question": "Which of the following AWS services is used for machine learning tasks?",
+        "answers": ["Amazon Redshift", "Amazon Aurora", "Amazon S3", "Amazon SageMaker"],
+        "correctAnswer": 3,
+        "explanations": [
+            "Amazon Redshift is for data warehousing.", 
+            "Amazon Aurora is a relational database.", 
+            "Amazon S3 is a storage service.", 
+            "Correct, Amazon SageMaker is designed for machine learning tasks."
+        ]
+    },
+    {
+        "question": "Which of the following is an EC2 purchasing option that lets you purchase capacity reservation for EC2 instances?",
+        "answers": ["Spot Instances", "Savings Plans", "Reserved Instances", "On-Demand Instances"],
+        "correctAnswer": 2,
+        "explanations": [
+            "Spot Instances are spare AWS capacity offered at a lower price.", 
+            "Savings Plans offer lower prices in exchange for usage commitment.", 
+            "Correct, Reserved Instances offer capacity reservation.", 
+            "On-Demand Instances are pay-as-you-go."
+        ]
+    },
+    {
+        "question": "How does AWS Pricing Calculator help with cost management?",
+        "answers": ["It provides cost estimates for the proposed AWS deployment.", "It manages AWS resources to stay in budget.", "It decreases the costs associated with your AWS resources.", "None of the above."],
+        "correctAnswer": 0,
+        "explanations": [
+            "Correct, it helps estimate costs.", 
+            "Managing AWS resources to stay in budget is not its primary function.", 
+            "It does not directly decrease costs.", 
+            "Incorrect."
+        ]
+    },
+    {
+        "question": "How does AWS handle the security ‘of’ the cloud?",
+        "answers": ["AWS is responsible for the security ‘in' the cloud.", "AWS is responsible for the security ‘of' the cloud.", "Both AWS & customers handle the security ‘of’ the cloud.", "Customers are responsible for the security ‘of' the cloud."],
+        "correctAnswer": 1,
+        "explanations": [
+            "Customers are responsible for 'in the cloud' security.", 
+            "Correct, AWS handles the security ‘of’ the cloud.", 
+            "Responsibilities are shared but AWS specifically handles 'of the cloud'.", 
+            "Incorrect."
+        ]
+    },
+    {
+        "question": "What does the acronym IAM stand for in relation to AWS?",
+        "answers": ["Internet Access & Management", "Integrated Assessment Modelling", "Infrastructure and Application Monitoring", "Identity and Access Management"],
+        "correctAnswer": 3,
+        "explanations": [
+            "Not the correct acronym for IAM.", 
+            "Not the correct acronym for IAM.", 
+            "Not the correct acronym for IAM.", 
+            "Correct, IAM stands for Identity and Access Management."
+        ]
+    },
+    {
+        "question": "What is AWS Trusted Advisor?",
+        "answers": ["A template library for CloudFormation templates.", "An online community where AWS users can connect and share knowledge.", "A tool that provides real-time guidance to provision resources.", "A support center that assists with troubleshooting AWS services."],
+        "correctAnswer": 2,
+        "explanations": [
+            "Not related to CloudFormation templates.", 
+            "Not an online community.", 
+            "Correct, it provides real-time advice.", 
+            "Not a support center."
+        ]
+    },
+    {
+        "question": "Which AWS service would you use for low latency data access to users across the world?",
+        "answers": ["Amazon S3", "AWS Direct Connect", "Amazon EC2", "Amazon CloudFront"],
+        "correctAnswer": 3,
+        "explanations": [
+            "Amazon S3 stores data but does not optimize for global low latency access.", 
+            "AWS Direct Connect establishes dedicated network connections.", 
+            "Amazon EC2 provides computing capacity.", 
+            "Correct, Amazon CloudFront provides low latency access through a CDN."
+        ]
+    },
+    {
+        "question": "Which AWS service can automatically adjust capacity to maintain steady, predictable performance at the lowest possible cost?",
+        "answers": ["EC2 Auto Scaling", "Amazon RDS", "AWS Lambda", "Amazon Aurora"],
+        "correctAnswer": 0,
+        "explanations": [
+            "Correct, EC2 Auto Scaling adjusts capacity automatically.", 
+            "Amazon RDS is used for databases but does not auto-scale in the same way.", 
+            "AWS Lambda auto-scales within limits.", 
+            "Amazon Aurora can auto-scale but not at the lowest possible cost automatically."
+        ]
+    },
+    {
+        "question": "Which AWS storage service provides secure, scalable, and simplified storage for use with AWS compute services?",
+        "answers": ["Amazon S3", "Amazon EFS", "Amazon EBS", "AWS Storage Gateway"],
+        "correctAnswer": 2,
+        "explanations": [
+            "Amazon S3 provides object storage but not directly tied to compute services.", 
+            "Amazon EFS provides file system storage.", 
+            "Correct, Amazon EBS provides block storage for use with EC2.", 
+            "AWS Storage Gateway provides hybrid cloud storage."
+        ]
+    },
+    {
+        "question": "Identify the AWS service designed to help AWS users with cost optimization.",
+        "answers": ["AWS X-Ray", "AWS GreenGrass", "AWS Trusted Advisor", "Amazon Lex"],
+        "correctAnswer": 2,
+        "explanations": [
+            "AWS X-Ray is for debugging applications.", 
+            "AWS GreenGrass is for IoT devices.", 
+            "Correct, AWS Trusted Advisor provides cost optimization recommendations.", 
+            "Amazon Lex is for building conversational interfaces."
+        ]
+    },
+    {
+        "question": "What is the advantage of having multiple Availability Zones in an AWS Region?",
+        "answers": ["More storage space", "Cost savings", "High availability", "Scalability"],
+        "correctAnswer": 2,
+        "explanations": [
+            "Not related to storage space.", 
+            "Not directly related to cost savings.", 
+            "Correct, it improves high availability.", 
+            "Though it can aid in scalability, the main benefit is high availability."
+        ]
+    },
+    {
+        "question": "What does PCI DSS Level 1 compliance for AWS mean?",
+        "answers": ["AWS is allowed to handle sensitive government data", "AWS is allowed to process, store, or transmit credit card information", "AWS is allowed to handle medical data", "All of the above"],
+        "correctAnswer": 1,
+        "explanations": [
+            "PCI DSS relates to credit card information, not government data.", 
+            "Correct, PCI DSS Level 1 compliance means AWS can handle credit card information.", 
+            "Medical data compliance would be HIPAA, not PCI DSS.", 
+            "Not correct."
+        ]
+    },
+    {
+        "question": "If an AWS user wants to reserve an EC2 instance for a certain period, what is the most cost-effective model?",
+        "answers": ["On-Demand Instances", "Spot Instances", "Reserved Instances", "Dedicated Hosts"],
+        "correctAnswer": 2,
+        "explanations": [
+            "On-Demand Instances are more flexible but not as cost-effective long-term.", 
+            "Spot Instances are cost-effective but do not guarantee availability.", 
+            "Correct, Reserved Instances offer lower prices for long-term use.", 
+            "Dedicated Hosts are for specific hardware requirements and may not be cost-effective."
+        ]
+    },
+    {
+        "question": "Which among the following AWS services can be used to automate your AWS resource configurations?",
+        "answers": ["AWS CloudFormation", "AWS CloudTrail", "Amazon EC2", "AWS Trusted Advisor"],
+        "correctAnswer": 0,
+        "explanations": [
+            "Correct, AWS CloudFormation automates resource configurations.", 
+            "AWS CloudTrail logs API calls.", 
+            "Amazon EC2 is used for compute capacity.", 
+            "AWS Trusted Advisor provides recommendations."
+        ]
+    },
+    {
+        "question": "What forms the backbone of network security in a VPC?",
+        "answers": ["Network ACL", "Security Group", "AWS WAF", "Customer Gateway"],
+        "correctAnswer": 1,
+        "explanations": [
+            "Network ACLs provide subnet-level security.", 
+            "Correct, Security Groups provide instance-level security.", 
+            "AWS WAF is a web application firewall, not the main security backbone.", 
+            "Customer Gateway connects on-premises sites to the VPC."
+        ]
+    },
+    {
+        "question": "Which AWS database service is highly suitable for a relational database application with frequent read-write operations?",
+        "answers": ["Amazon Aurora", "Amazon Redshift", "Amazon DynamoDB", "Amazon RDS"],
+        "correctAnswer": 0,
+        "explanations": [
+            "Correct, Amazon Aurora is optimized for high read-write performance.", 
+            "Amazon Redshift is for data warehousing and analytics.", 
+            "Amazon DynamoDB is NoSQL, not specifically for relational databases.", 
+            "Amazon RDS supports relational databases but may not be as high-performing as Aurora."
+        ]
+    },
+    {
+        "question": "Which AWS AI/ML service is used to add image analysis to your applications?",
+        "answers": ["Amazon SageMaker", "Amazon Lex", "Amazon Polly", "Amazon Rekognition"],
+        "correctAnswer": 3,
+        "explanations": [
+            "Amazon SageMaker is for building and training machine learning models.", 
+            "Amazon Lex is for building conversational interfaces.", 
+            "Amazon Polly converts text to speech.", 
+            "Correct, Amazon Rekognition is used for image and video analysis."
+        ]
+    },
+    {
+        "question": "In the AWS Shared Responsibility Model, who is responsible for patching and fixing flaws within the cloud infrastructure?",
+        "answers": ["Both AWS and the customer", "Only the customer", "AWS Support", "Only AWS"],
+        "correctAnswer": 3,
+        "explanations": [
+            "While responsibilities are shared, AWS handles the infrastructure.", 
+            "Customers are responsible for patches on the services they run.", 
+            "Not correct.", 
+            "Correct, AWS is responsible for the underlying infrastructure."
+        ]
+    },
+{
+        "question": "What provides a virtual network dedicated to your AWS account?",
+        "answers": ["AWS Site-to-Site VPN", "Amazon VPC", "AWS Direct Connect", "AWS Transit Gateway"],
+        "correctAnswer": 1,
+        "explanations": [
+            "AWS Site-to-Site VPN connects on-premises networks to AWS.",
+            "Correct, Amazon VPC provides a virtual network dedicated to your AWS account.",
+            "AWS Direct Connect establishes dedicated network connections.",
+            "AWS Transit Gateway connects VPCs and on-premises networks."
+        ]
+    },
+    {
+        "question": "When would you use the AWS Snowball service?",
+        "answers": ["When you want to move large amounts of data in and out of the AWS Cloud, especially in locations with limitations on available bandwidth.", "When you want to conduct big data analysis with AWS computational tools.", "When you are looking to combine all your monitored AWS resources in one place.", "When you want to improve the performance of web applications by routing end users to the nearest possible location."],
+        "correctAnswer": 0,
+        "explanations": [
+            "Correct, AWS Snowball is used for moving large amounts of data, particularly in locations with limited bandwidth.",
+            "AWS Snowball is not specifically designed for big data analysis.",
+            "AWS Snowball does not serve as a central monitoring tool.",
+            "AWS Snowball is not a tool for routing or performance improvement for web applications."
+        ]
+    },
+    {
+        "question": "Which AWS service provides object storage and offers industry-leading scalability, data availability, security, and performance?",
+        "answers": ["Amazon Glacier", "Amazon Simple Storage Services (S3)", "AWS Snowball", "Amazon Redshift"],
+        "correctAnswer": 1,
+        "explanations": [
+            "Amazon Glacier is designed for long-term data archiving.",
+            "Correct, Amazon S3 offers object storage with high scalability, availability, security, and performance.",
+            "AWS Snowball is used for data transport, not object storage.",
+            "Amazon Redshift is a data warehousing service, not for object storage."
+        ]
+    },
+    {
+        "question": "Which AWS service serves as an intrusion detection system and threat detection service, continuously monitoring for malicious activity and unauthorized behavior?",
+        "answers": ["Amazon GuardDuty", "AWS Inspector", "AWS Artifact", "AWS Shield Advanced"],
+        "correctAnswer": 0,
+        "explanations": [
+            "Correct, Amazon GuardDuty provides continuous monitoring for threats and malicious activity.",
+            "AWS Inspector is used for security assessments.",
+            "AWS Artifact provides access to security and compliance reports.",
+            "AWS Shield Advanced provides DDoS protection, not continuous threat detection."
+        ]
+    },
+    {
+        "question": "Which AWS AI/ML service enables developers to build virtual assistants?",
+        "answers": ["Amazon Polly", "Amazon Textract", "Amazon Lex", "Amazon SageMaker"],
+        "correctAnswer": 2,
+        "explanations": [
+            "Amazon Polly converts text to speech.",
+            "Amazon Textract extracts text and data from documents.",
+            "Correct, Amazon Lex is used to build conversational interfaces and virtual assistants.",
+            "Amazon SageMaker is for building, training, and deploying machine learning models."
+        ]
+    },
+    {
+        "question": "Spot Instances are an instance purchasing option that offers unused AWS EC2 capacity at what compared to the On-Demand price?",
+        "answers": ["90% discount", "No discount", "25% premium", "Same price as On-Demand instances"],
+        "correctAnswer": 0,
+        "explanations": [
+            "Correct, Spot Instances can offer up to a 90% discount compared to On-Demand prices.",
+            "There is a discount, contradicting this option.",
+            "Spot Instances offer a discount, not a premium.",
+            "Spot Instances are not the same price as On-Demand instances."
+        ]
+    },
+    {
+        "question": "What would you use AWS CloudFormation for?",
+        "answers": ["To monitor your AWS cloud resources and applications", "To transfer large amounts of data to and from AWS", "To create and manage a collection of related AWS resources", "To build conversational interfaces for your applications"],
+        "correctAnswer": 2,
+        "explanations": [
+            "AWS CloudFormation is not primarily a monitoring tool.",
+            "AWS Snowball and other data transfer services are used for transferring large amounts of data.",
+            "Correct, AWS CloudFormation is used to create and manage collections of AWS resources.",
+            "Amazon Lex is used to build conversational interfaces."
+        ]
+    },
+    {
+        "question": "Which service aids in sharing data across the components of your applications?",
+        "answers": ["AWS S3", "AWS Lambda", "AWS AppSync", "AWS Secrets Manager"],
+        "correctAnswer": 2,
+        "explanations": [
+            "AWS S3 stores data but does not directly aid in real-time data sharing.",
+            "AWS Lambda is for running code but does not specifically aid in data sharing.",
+            "Correct, AWS AppSync helps in data sharing across application components by providing a GraphQL API.",
+            "AWS Secrets Manager securely stores secrets and does not aid in data sharing."
+        ]
+    },
+    {
+        "question": "AWS Wavelength Zones enable developers to build applications that deliver single-digit millisecond latencies to mobile devices and end-users. What is this achieved by leveraging?",
+        "answers": ["Microservices", "AWS Local Zones", "IoT core", "5G networks"],
+        "correctAnswer": 3,
+        "explanations": [
+            "Microservices are a design pattern, not a direct factor in latency reduction.",
+            "AWS Local Zones bring compute, storage, and other services close to your end-users, but not specifically single-digit latency.",
+            "IoT core is for managing IoT devices, not latency reduction for mobile devices.",
+            "Correct, 5G networks provide the low latency connection for Wavelength Zones."
+        ]
+    },
+    {
+        "question": "Which service from AWS allows application programs to use the internet to dispatch software as a simple queue service?",
+        "answers": ["Amazon SQS", "Amazon EFS", "AWS Glue", "Amazon RDS"],
+        "correctAnswer": 0,
+        "explanations": [
+            "Correct, Amazon SQS (Simple Queue Service) provides a queue for messaging.",
+            "Amazon EFS is a file storage service.",
+            "AWS Glue is a data integration service.",
+            "Amazon RDS is a relational database service."
+        ]
+    },
+    {
+        "question": "AWS Cost Explorer is a tool that",
+        "answers": ["Helps you manage your costs and usage.", "Visualizes your AWS cost data at a high level.", "Helps automate the administration tasks.", "Both a and b"],
+        "correctAnswer": 3,
+        "explanations": [
+            "Correct, but lacks completeness as it also visualizes cost data.",
+            "Correct, but lacks completeness as it also helps manage costs and usage.",
+            "AWS Cost Explorer does not automate administration tasks.",
+            "Correct, both a and b are true. It helps manage costs and usage and visualizes cost data."
+        ]
+    },
+    {
+        "question": "Which programming language is primarily associated with AWS Lambda?",
+        "answers": ["C++", "JavaScript", "Python", "Java"],
+        "correctAnswer": 2,
+        "explanations": [
+            "C++ is supported but not primarily associated with AWS Lambda.",
+            "JavaScript is supported but not primarily associated with AWS Lambda.",
+            "Correct, Python is one of the primary languages used with AWS Lambda.",
+            "Java is supported but not primarily associated with AWS Lambda."
+        ]
+    },
+    {
+        "question": "What does the ELB service in Amazon AWS do?",
+        "answers": ["It provides automatic scaling of resources.", "It routes traffic to different EC2 instances.", "It provides cloud storage.", "It manages databases in the cloud."],
+        "correctAnswer": 1,
+        "explanations": [
+            "ELB helps with load balancing, not directly with automatic scaling (handled by Auto Scaling).",
+            "Correct, ELB (Elastic Load Balancing) routes traffic across EC2 instances.",
+            "ELB does not provide storage.",
+            "ELB does not manage databases."
+        ]
+    },
+    {
+        "question": "Which AWS service provides recommendation for your AWS resources?",
+        "answers": ["AWS Trusted Advisor", "AWS GuardDuty", "Amazon Inspector", "AWS Macie"],
+        "correctAnswer": 0,
+        "explanations": [
+            "Correct, AWS Trusted Advisor provides recommendations for cost optimization, security, and other aspects.",
+            "AWS GuardDuty is for threat detection.",
+            "Amazon Inspector is for security assessments.",
+            "AWS Macie is for data privacy and security."
+        ]
+    },
+    {
+        "question": "Which of these is a pillar of the AWS Well-Architected Framework?",
+        "answers": ["Simplicity", "Usability", "Cost Optimization", "Maintainability"],
+        "correctAnswer": 2,
+        "explanations": [
+            "Simplicity is not one of the pillars.",
+            "Usability is not one of the pillars.",
+            "Correct, Cost Optimization is one of the five pillars.",
+            "Maintainability is not one of the pillars."
+        ]
+    },
+    {
+        "question": "What is the key backing store for the global state of all AWS accounts?",
+        "answers": ["Amazon DynamoDB", "AWS Shield", "AWS Macie", "Amazon QLDB"],
+        "correctAnswer": 3,
+        "explanations": [
+            "Amazon DynamoDB stores data but is not the key backing store for AWS account state.",
+            "AWS Shield provides DDoS protection.",
+            "AWS Macie provides data security.",
+            "Correct, Amazon QLDB (Quantum Ledger Database) is the backing store for the global state of AWS accounts."
+        ]
+    },
+    {
+        "question": "The AWS SLA guarantees a monthly uptime percentage of what for Amazon EC2 and Amazon EBS?",
+        "answers": ["95%", "96.5%", "97%", "99.95%"],
+        "correctAnswer": 3,
+        "explanations": [
+            "Incorrect, the uptime guarantee is higher.",
+            "Incorrect, the uptime guarantee is higher.",
+            "Incorrect, the uptime guarantee is higher.",
+            "Correct, the SLA guarantees 99.95% uptime."
+        ]
+    },
+    {
+        "question": "Your organization wants to store some static web content that needs to be available globally, quickly. Which AWS service should you use?",
+        "answers": ["AWS Lambda", "Amazon RDS", "Amazon S3 with Amazon CloudFront", "Amazon EC2"],
+        "correctAnswer": 2,
+        "explanations": [
+            "AWS Lambda runs code in response to events and is not suited for storing web content.",
+            "Amazon RDS is for relational databases, not static web content.",
+            "Correct, Amazon S3 stores static content and CloudFront provides global distribution with low latency.",
+            "Amazon EC2 provides compute, not suited specifically for static content distribution."
+        ]
+    },
+    {
+        "question": "You are tasked to automate a backup task for your Amazon RDS. Which AWS service can you leverage for this?",
+        "answers": ["AWS Lambda", "AWS ELB", "AWS Backup", "Amazon S3"],
+        "correctAnswer": 2,
+        "explanations": [
+            "AWS Lambda can run backup scripts but is more complex for this task.",
+            "AWS ELB is for load balancing, not backups.",
+            "Correct, AWS Backup provides automated backups for RDS and other services.",
+            "Amazon S3 stores backup data but does not automate the process."
+        ]
+    },
+    {
+        "question": "Your company is currently using on-premises software and wants to move this software to the cloud for better scalability and reduced maintenance. What AWS strategy can assist with this need?",
+        "answers": ["AWS Trusted Advisor", "AWS CloudFormation", "AWS Snowball", "AWS Cloud Adoption Framework"],
+        "correctAnswer": 3,
+        "explanations": [
+            "AWS Trusted Advisor provides recommendations but does not assist directly in moving software.",
+            "AWS CloudFormation automates resource management but does not provide a migration strategy.",
+            "AWS Snowball is for data transfer, not for moving and scaling software.",
+            "Correct, AWS Cloud Adoption Framework provides best practices for transitioning to the cloud."
+        ]
+    },
+    {
+        "question": "You are looking to automate resource configuration management across your AWS resources at scale. Which AWS service could help you achieve this?",
+        "answers": ["AWS Elastic Beanstalk", "AWS Config", "Amazon CloudWatch", "Amazon Transcribe"],
+        "correctAnswer": 1,
+        "explanations": [
+            "AWS Elastic Beanstalk is used for deploying and scaling web applications.",
+            "Correct, AWS Config manages and tracks resource configurations.",
+            "Amazon CloudWatch monitors resources and applications but does not manage configurations.",
+            "Amazon Transcribe is a transcription service."
+        ]
+    },
+    {
+        "question": "Your application needs to process high-speed streaming data and analyze them in real time. Which AWS service can handle this use case?",
+        "answers": ["Amazon EC2", "Amazon RDS", "Amazon Kinesis", "Amazon S3"],
+        "correctAnswer": 2,
+        "explanations": [
+            "Amazon EC2 provides compute capacity but does not specialize in streaming data.",
+            "Amazon RDS is for relational databases, not for streaming data.",
+            "Correct, Amazon Kinesis is designed for real-time data streaming and analysis.",
+            "Amazon S3 is for storage, not for streaming data."
+        ]
+    },
+    {
+        "question": "A media company wants to build an AI to forecast the popularity of its future releases based on the historical data. Which AWS service will you recommend?",
+        "answers": ["AWS Elastic Beanstalk", "Amazon Forecast", "AWS IoT Core", "Amazon Athena"],
+        "correctAnswer": 1,
+        "explanations": [
+            "AWS Elastic Beanstalk is for deploying and managing applications, not for forecasting.",
+            "Correct, Amazon Forecast uses machine learning to make accurate predictions based on historical data.",
+            "AWS IoT Core is for managing IoT devices, not for forecasting.",
+            "Amazon Athena is for querying data, not for forecasting."
+        ]
+    },
+    {
+        "question": "You are asked to audit AWS Management Console sign-in events for your account. What service should you utilize?",
+        "answers": ["AWS Artifact", "AWS CloudTrail", "Amazon Inspector", "AWS Security Hub"],
+        "correctAnswer": 1,
+        "explanations": [
+            "AWS Artifact provides compliance reports and documentation.",
+            "Correct, AWS CloudTrail logs and monitors sign-in events and API calls.",
+            "Amazon Inspector is for security assessments.",
+            "AWS Security Hub aggregates security alerts but does not specifically audit sign-in events."
+        ]
+    },
+    {
+        "question": "Your application needs to quickly analyze unstructured text and extract information like organizations, persons, and locations. Which AWS service can help with this?",
+        "answers": ["Amazon Comprehend", "Amazon Athena", "Amazon QuickSight", "Amazon Macie"],
+        "correctAnswer": 0,
+        "explanations": [
+            "Correct, Amazon Comprehend is used for natural language processing and extracting insights from text.",
+            "Amazon Athena is for querying data.",
+            "Amazon QuickSight is for business intelligence and data visualization.",
+            "Amazon Macie is for discovering and protecting sensitive data."
+        ]
+    },
+    {
+        "question": "Your e-commerce website has high variations in its traffic pattern and requires an elastic solution for its database needs. What should you suggest?",
+        "answers": ["DynamoDB", "Amazon RDS", "Amazon Aurora Serverless", "Amazon Redshift"],
+        "correctAnswer": 2,
+        "explanations": [
+            "DynamoDB is a NoSQL database solution and not ideal for all relational needs.",
+            "Amazon RDS can scale but may not handle extreme variations seamlessly compared to serverless options.",
+            "Correct, Amazon Aurora Serverless automatically adjusts capacity based on traffic.",
+            "Amazon Redshift is for data warehousing and is not ideal for transactional database needs."
+        ]
+    },
+    {
+        "question": "You are required to design a system that requires a message to be processed exactly once and in the order of arrival. What AWS service can support this?",
+        "answers": ["Amazon DynamoDB", "AWS Lambda", "Amazon SQS FIFO", "AWS Kinesis"],
+        "correctAnswer": 2,
+        "explanations": [
+            "Amazon DynamoDB is a NoSQL database and does not specialize in message ordering.",
+            "AWS Lambda processes code but does not inherently manage message order.",
+            "Correct, Amazon SQS FIFO (First-In-First-Out) queues ensure messages are processed exactly once and in order.",
+            "AWS Kinesis handles streaming data but not specifically for ordered message processing."
+        ]
+    },
+    {
+        "question": "Your mobile application requires a service to provide real-time updates to its users. Which AWS services could handle this?",
+        "answers": ["AWS Elastic Beanstalk", "AWS AppSync", "AWS Lambda", "AWS Amplify"],
+        "correctAnswers": [1, 3],
+        "explanations": [
+            "AWS Elastic Beanstalk is for deploying and managing applications but not particularly for real-time updates.",
+            "Correct, AWS AppSync provides real-time updates through GraphQL.",
+            "AWS Lambda could be used in conjunction with other services but is not a direct solution for real-time updates.",
+            "Correct, AWS Amplify supports real-time and offline data synchronization."
+        ]
+    },
+    {
+        "question": "Your organization is storing a lot of rarely-accessed data in Amazon S3. Which actions could reduce cost?",
+        "answers": ["Use lifecycle policies to migrate to S3-Infrequent Access or Glacier", "Delete rarely used data", "Stop incoming transfers to S3", "Store data in EC2 instead"],
+        "correctAnswers": [0, 1],
+        "explanations": [
+            "Correct, lifecycle policies can automatically move data to lower-cost storage classes.",
+            "Correct, deleting unnecessary data can reduce storage costs.",
+            "Stopping incoming transfers may not be feasible or relevant to cost reduction.",
+            "EC2 is not a cost-effective storage solution compared to S3."
+        ]
+    },
+    {
+        "question": "Your company collects massive amounts of data daily from various sources. Which AWS services can store and analyze this data effectively?",
+        "answers": ["AWS Glue", "Amazon Athena", "Amazon Redshift", "Amazon DynamoDB"],
+        "correctAnswers": [0, 1, 2],
+        "explanations": [
+            "Correct, AWS Glue helps with data integration and preparation for analysis.",
+            "Correct, Amazon Athena queries data stored in S3 using SQL.",
+            "Correct, Amazon Redshift is a data warehousing service for large-scale data analysis.",
+            "Amazon DynamoDB is a NoSQL database and not the best solution for large-scale data analysis."
+        ]
+    },
+    {
+        "question": "When would you use the AWS Snowball service?",
+        "answers": [
+            "When you want to move large amounts of data in and out of the AWS Cloud, especially in locations with limitations on available bandwidth.",
+            "When you want to conduct big data analysis with AWS computational tools.",
+            "When you are looking to combine all your monitored AWS resources in one place.",
+            "When you want to improve the performance of web applications by routing end users to the nearest possible location."
+        ],
+        "correctAnswer": 0,
+        "explanations": [
+            "Correct, AWS Snowball is used for moving large amounts of data, particularly in locations with limited bandwidth.",
+            "AWS Snowball is not specifically designed for big data analysis.",
+            "AWS Snowball does not serve as a central monitoring tool.",
+            "AWS Snowball is not a tool for routing or performance improvement for web applications."
+        ]
+    },
+    {
+        "question": "Your company collects massive amounts of data daily from various sources. Which AWS services can store and analyze this data effectively?",
+        "answers": ["AWS Glue", "Amazon Athena", "Amazon Redshift", "Amazon DynamoDB"],
+        "correctAnswers": [0, 1, 2],
+        "explanations": [
+            "Correct, AWS Glue helps with data integration and preparation for analysis.",
+            "Correct, Amazon Athena queries data stored in S3 using SQL.",
+            "Correct, Amazon Redshift is a data warehousing service for large-scale data analysis.",
+            "Amazon DynamoDB is a NoSQL database and not the best solution for large-scale data analysis."
+        ]
+    },
+    {
+        "question": "Which AWS AI service(s) would be best suited to help add a speech recognition feature to an application?",
+        "answers": ["Amazon Transcribe", "Amazon Polly", "Amazon Lex", "Amazon Comprehend"],
+        "correctAnswers": [0, 2],
+        "explanations": [
+            "Correct, Amazon Transcribe converts speech to text for further processing.",
+            "Amazon Polly converts text to speech, not for speech recognition.",
+            "Correct, Amazon Lex combines speech recognition with natural language understanding for building conversational interfaces.",
+            "Amazon Comprehend is used for natural language processing, not speech recognition."
+        ]
+    },
+    {
+        "question": "Based on the shared responsibility framework, who is responsible for deploying patches in an EC2 instance?",
+        "answers": ["AWS solely", "Shared between AWS and the customer", "The customer solely", "Not applicable as EC2 instances don't require patching"],
+        "correctAnswer": 2,
+        "explanations": [
+            "AWS is responsible for the underlying infrastructure but not the instances.",
+            "Shared responsibility applies to the AWS environment, but patching instances is the customer's responsibility.",
+            "Correct, the customer solely is responsible for patching their EC2 instances.",
+            "Instances often require patching; this statement is incorrect."
+        ]
+    },
+    {
+        "question": "Which AWS services could reduce data transfer cost between an EC2 instance and a private data center?",
+        "answers": ["AWS Direct Connect", "Amazon S3", "Amazon VPC", "AWS Snowball"],
+        "correctAnswers": [0, 2],
+        "explanations": [
+            "Correct, AWS Direct Connect provides a dedicated network connection which can reduce data transfer costs.",
+            "Amazon S3 is a storage service and does not necessarily reduce data transfer costs.",
+            "Correct, using Amazon VPC with Direct Connect helps reduce data transfer costs by keeping traffic within the AWS network.",
+            "AWS Snowball is for physical data transfer, not ongoing data traffic."
+        ]
+    },
+    {
+        "question": "Your organization requires a highly scalable database for an application with unpredictable traffic. Which AWS services would be suitable?",
+        "answers": ["Amazon DynamoDB", "Amazon Aurora", "Amazon RDS", "AWS Glue"],
+        "correctAnswers": [0, 1],
+        "explanations": [
+            "Correct, Amazon DynamoDB is a fully managed, scalable NoSQL database service.",
+            "Correct, Amazon Aurora is a fully managed relational database with high-performance scaling.",
+            "Amazon RDS provides scalable relational databases but may not handle unpredictable traffic as efficiently as Aurora.",
+            "AWS Glue is a data integration service and not directly suitable for use as a database."
+        ]
+    },
+    {
+        "question": "The operations team at your company wants to be alerted of any hardware or software issues with your AWS resources. What AWS services could provide such notification?",
+        "answers": ["AWS Trusted Advisor", "Amazon SNS", "Amazon CloudWatch Alarms", "AWS Everyday Health Dashboard"],
+        "correctAnswers": [1, 2],
+        "explanations": [
+            "AWS Trusted Advisor provides recommendations but does not directly send alerts.",
+            "Correct, Amazon SNS (Simple Notification Service) can be configured to send alerts for various events.",
+            "Correct, Amazon CloudWatch Alarms can monitor AWS resources and trigger notifications when specified metrics are met.",
+            "AWS Everyday Health Dashboard is not a service for real-time alerts and notifications."
+        ]
+    },
+    {
+        "question": "Your organization requires real-time translation of user voice commands. Which AWS services could execute this task?",
+        "answers": ["Amazon Transcribe", "Amazon Translate", "Amazon Polly", "AWS Lambda"],
+        "correctAnswers": [0, 1],
+        "explanations": [
+            "Correct, Amazon Transcribe converts speech to text.",
+            "Correct, Amazon Translate converts the transcribed text to another language in real-time.",
+            "Amazon Polly converts text to speech but does not handle translation.",
+            "AWS Lambda can orchestrate the process but does not provide translation services directly."
+        ]
+    },
+    {
+        "question": "Which AWS services provide resource monitoring and managing capabilities?",
+        "answers": ["AWS Config", "AWS IAM", "Amazon CloudWatch", "AWS Trusted Advisor"],
+        "correctAnswers": [0, 2, 3],
+        "explanations": [
+            "Correct, AWS Config tracks resource configurations and changes.",
+            "AWS IAM manages user access and permissions, not monitoring resources.",
+            "Correct, Amazon CloudWatch monitors AWS resources and applications.",
+            "Correct, AWS Trusted Advisor provides recommendations for resource optimization and management."
+        ]
+    }
+]

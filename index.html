@@ -76,7 +76,7 @@
 
         async function fetchQuestions() {
             try {
-                const response = await fetch('https://spontantula.github.io/examinator/question-bank.json');
+                const response = await fetch('https://<your-github-username>.github.io/<your-repository-name>/questionsAndAnswers.json');
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -113,7 +113,7 @@
                 <div id="answers" class="mt-4">
                     ${answers.map((answer, i) => `
                         <div class="form-check">
-                            <input class="form-check-input" type="${isMultiple ? 'checkbox' : 'radio'}" name="answer" id="answer${i}" value="${i}" ${isMultiple ? userAnswer?.includes(i) : userAnswer === i ? 'checked' : ''} ${isAnswered ? 'disabled' : ''}>
+                            <input class="form-check-input" type="${isMultiple ? 'checkbox' : 'radio'}" name="answer" id="answer${i}" value="${i}" ${isMultiple ? userAnswer?.includes(i) : userAnswer === i ? 'checked' : ''} ${isAnswered && !isMultiple ? 'disabled' : ''}>
                             <label class="form-check-label" for="answer${i}" id="label${i}">
                                 ${answer}
                             </label>
@@ -122,6 +122,13 @@
                     `).join("")}
                 </div>
             `;
+
+            // Disable checkboxes if all options have been selected
+            if (isMultiple && isAnswered) {
+                if (userAnswer.length === questionsAndAnswers[index].correctAnswer.length) {
+                    document.querySelectorAll('input[name="answer"]').forEach(input => input.disabled = true);
+                }
+            }
 
             if (isAnswered) {
                 // Show explanation
@@ -178,18 +185,26 @@
             const { userAnswer, correctAnswer, explanations } = questionsAndAnswers[currentQuestionIndex];
 
             if (Array.isArray(correctAnswer)) {
-                correctAnswer.forEach((i) => {
-                    const explanation = document.createElement('div');
-                    explanation.classList.add('p-2', 'mb-2', 'rounded');
-                    explanation.classList.add(userAnswer.includes(i) ? 'correct-explanation' : 'incorrect-explanation');
-                    explanation.innerText = explanations[i];
-                    explanationsContainer.appendChild(explanation);
+                explanations.forEach((explanation, i) => {
+                    const explanationDiv = document.createElement('div');
+                    explanationDiv.classList.add('p-2', 'mb-2', 'rounded');
+                    if (userAnswer.includes(i) && correctAnswer.includes(i)) {
+                        explanationDiv.classList.add('correct-explanation');
+                    } else if (userAnswer.includes(i) && !correctAnswer.includes(i)) {
+                        explanationDiv.classList.add('incorrect-explanation');
+                    }
+                    explanationDiv.innerText = explanation;
+                    explanationsContainer.appendChild(explanationDiv);
                 });
             } else {
                 explanations.forEach((explanation, i) => {
                     const explanationDiv = document.createElement('div');
                     explanationDiv.classList.add('p-2', 'mb-2', 'rounded');
-                    explanationDiv.classList.add(userAnswer === i ? 'correct-explanation' : 'incorrect-explanation');
+                    if (userAnswer === i && correctAnswer === i) {
+                        explanationDiv.classList.add('correct-explanation');
+                    } else if (userAnswer === i && correctAnswer !== i) {
+                        explanationDiv.classList.add('incorrect-explanation');
+                    }
                     explanationDiv.innerText = explanation;
                     explanationsContainer.appendChild(explanationDiv);
                 });

@@ -113,7 +113,7 @@
                 <div id="answers" class="mt-4">
                     ${answers.map((answer, i) => `
                         <div class="form-check">
-                            <input class="form-check-input" type="${isMultiple ? 'checkbox' : 'radio'}" name="answer" id="answer${i}" value="${i}" ${isMultiple ? userAnswer?.includes(i) ? 'checked' : '' : userAnswer === i ? 'checked' : ''} ${isAnswered ? 'disabled' : ''}>
+                            <input class="form-check-input" type="${isMultiple ? 'checkbox' : 'radio'}" name="answer" id="answer${i}" value="${i}" ${isMultiple ? userAnswer?.includes(i) ? 'checked' : '' : userAnswer === i ? 'checked' : ''} ${isAnswered && !isMultiple ? 'disabled' : ''}>
                             <label class="form-check-label" for="answer${i}" id="label${i}">
                                 ${answer}
                             </label>
@@ -154,7 +154,7 @@
         function getIconHtml(index, userAnswer) {
             const correctAnswer = questionsAndAnswers[currentQuestionIndex].correctAnswer;
             if (Array.isArray(correctAnswer)) {
-                return correctAnswer.includes(index) ? '<i class="fas fa-check correct-icon"></i>' : (userAnswer.includes(index) ? '<i class="fas fa-times incorrect-icon"></i>' : '');
+                return correctAnswer.includes(index) ? '<i class="fas fa-check correct-icon"></i>' : (userAnswer && userAnswer.includes(index) ? '<i class="fas fa-times incorrect-icon"></i>' : '');
             } else {
                 return correctAnswer === index ? '<i class="fas fa-check correct-icon"></i>' : (userAnswer === index ? '<i class="fas fa-times incorrect-icon"></i>' : '');
             }

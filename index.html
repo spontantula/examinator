@@ -1,1 +1,286 @@
-<h1>Hello!</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .progress {
+            height: 30px;
+        }
+        .progress-bar {
+            line-height: 30px;
+            font-weight: bold;
+        }
+        .progress-info {
+            font-size: 1.2em;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        .correct-icon {
+            color: green;
+        }
+        .incorrect-icon {
+            color: red;
+        }
+        .correct-explanation {
+            background-color: #d4edda;
+        }
+        .incorrect-explanation {
+            background-color: #f8d7da;
+        }
+    </style>
+</head>
+<body>
+    <div id="main-page" class="container py-5" style="display: none;">
+        <h1 class="text-center">Exam</h1>
+        <h3 class="text-center my-4">Questions List</h3>
+        <ul class="list-group" id="question-list">
+            <!-- A list of questions will be generated here via JavaScript -->
+        </ul>
+    </div>
+
+    <div id="question-page" class="container py-5">
+        <h1 class="text-center">Exam</h1>
+        <div class="progress-info">
+            <span id="completed">0</span> / <span id="total">0</span> completed
+            (<span id="remaining">0</span> remaining)
+        </div>
+        <div class="progress my-4">
+            <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuemin="0" aria-valuemax="100">0%</div>
+        </div>
+        <button type="button" id="back-to-main-btn" class="btn btn-info mb-4">Back to Questions List</button>
+        <form id="exam-form">
+            <div id="question-container">
+                <!-- questions will be inserted here by JavaScript -->
+            </div>
+            <div class="btn-toolbar justify-content-between mt-5">
+                <button type="button" id="prev-btn" class="btn btn-secondary" disabled>Previous</button>
+                <button type="button" id="next-btn" class="btn btn-primary">Next</button>
+            </div>
+            <button type="submit" id="submit-btn" class="btn btn-danger mt-5" style="display: none;">Submit</button>
+        </form>
+        <div id="results" class="text-center mt-5" style="display: none;">
+            <h2>Your Results</h2>
+            <p id="score"></p>
+            <p id="feedback"></p>
+            <button type="button" id="retake-btn" class="btn btn-primary">Retake Exam</button>
+        </div>
+    </div>
+
+    <script>
+        let questionsAndAnswers = [];
+        let currentQuestionIndex = 0;
+
+        async function fetchQuestions() {
+            try {
+                const response = await fetch('https://spontantula.github.io/examinator/question-bank.json');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                questionsAndAnswers = await response.json();
+                displayMainPage(); // Display the main page after data is fetched
+            } catch (error) {
+                console.error('There has been a problem with your fetch operation:', error);
+            }
+        }
+
+        function updateProgressBar() {
+            const progressBar = document.getElementById('progress-bar');
+            const completedQuestions = questionsAndAnswers.filter(q => q.userAnswer !== undefined).length;
+            const totalQuestions = questionsAndAnswers.length;
+            const remainingQuestions = totalQuestions - completedQuestions;
+
+            document.getElementById('completed').textContent = completedQuestions;
+            document.getElementById('remaining').textContent = remainingQuestions;
+            document.getElementById('total').textContent = totalQuestions;
+
+            const completedPercentage = (completedQuestions / totalQuestions) * 100;
+            progressBar.style.width = `${completedPercentage}%`;
+            progressBar.textContent = `${Math.round(completedPercentage)}%`;
+        }
+
+        function displayQuestion(index) {
+            const questionContainer = document.getElementById('question-container');
+            const { question, answers, userAnswer } = questionsAndAnswers[index];
+            const isMultiple = Array.isArray(questionsAndAnswers[index].correctAnswer);
+            const isAnswered = userAnswer !== undefined;
+
+            questionContainer.innerHTML = `
+                <h5>${question}</h5>
+                <div id="answers" class="mt-4">
+                    ${answers.map((answer, i) => `
+                        <div class="form-check">
+                            <input class="form-check-input" type="${isMultiple ? 'checkbox' : 'radio'}" name="answer" id="answer${i}" value="${i}" ${isMultiple ? userAnswer?.includes(i) : userAnswer === i ? 'checked' : ''} ${isAnswered ? 'disabled' : ''}>
+                            <label class="form-check-label" for="answer${i}" id="label${i}">
+                                ${answer}
+                            </label>
+                            ${isAnswered && getIconHtml(i, userAnswer) || ""}
+                        </div>
+                    `).join("")}
+                </div>
+            `;
+
+            if (isAnswered) {
+                // Show explanation
+                showExplanation();
+            } else {
+                // Add event listener to the inputs to show icons on selection
+                document.querySelectorAll('input[name="answer"]').forEach(input => {
+                    input.addEventListener('change', (event) => {
+                        if (isMultiple) {
+                            const selectedAnswers = Array.from(document.querySelectorAll('input[name="answer"]:checked')).map(input => Number(input.value));
+                            questionsAndAnswers[currentQuestionIndex].userAnswer = selectedAnswers;
+                            if (selectedAnswers.length === questionsAndAnswers[currentQuestionIndex].correctAnswer.length) { 
+                                // Show icons and disable the checkboxes if max selections are done
+                                showIcons();
+                                document.querySelectorAll('input[name="answer"]').forEach(input => input.disabled = true);
+                                showExplanation();
+                            }
+                        } else {
+                            questionsAndAnswers[currentQuestionIndex].userAnswer = Number(input.value);
+                            showIcons();
+                            document.querySelectorAll('input[name="answer"]').forEach(input => input.disabled = true);
+                            showExplanation();
+                        }
+                        updateQuestionStatus();
+                    });
+                });
+            }
+
+            // Update progress bar
+            updateProgressBar();
+        }
+
+        function getIconHtml(index, userAnswer) {
+            const correctAnswer = questionsAndAnswers[currentQuestionIndex].correctAnswer;
+            if (Array.isArray(correctAnswer)) {
+                return correctAnswer.includes(index) ? '<i class="fas fa-check correct-icon"></i>' : (userAnswer.includes(index) ? '<i class="fas fa-times incorrect-icon"></i>' : '');
+            } else {
+                return correctAnswer === index ? '<i class="fas fa-check correct-icon"></i>' : (userAnswer === index ? '<i class="fas fa-times incorrect-icon"></i>' : '');
+            }
+        }
+
+        function showIcons() {
+            const { userAnswer } = questionsAndAnswers[currentQuestionIndex];
+            document.querySelectorAll('label[for^="answer"]').forEach((label, index) => {
+                const iconHtml = getIconHtml(index, userAnswer);
+                label.innerHTML = label.innerText + ' ' + iconHtml; // Append the icon HTML to label text
+            });
+        }
+
+        function showExplanation() {
+            const explanationsContainer = document.createElement('div');
+            explanationsContainer.classList.add('mt-3');
+
+            const { userAnswer, correctAnswer, explanations } = questionsAndAnswers[currentQuestionIndex];
+
+            if (Array.isArray(correctAnswer)) {
+                correctAnswer.forEach((i) => {
+                    const explanation = document.createElement('div');
+                    explanation.classList.add('p-2', 'mb-2', 'rounded');
+                    explanation.classList.add(userAnswer.includes(i) ? 'correct-explanation' : 'incorrect-explanation');
+                    explanation.innerText = explanations[i];
+                    explanationsContainer.appendChild(explanation);
+                });
+            } else {
+                explanations.forEach((explanation, i) => {
+                    const explanationDiv = document.createElement('div');
+                    explanationDiv.classList.add('p-2', 'mb-2', 'rounded');
+                    explanationDiv.classList.add(userAnswer === i ? 'correct-explanation' : 'incorrect-explanation');
+                    explanationDiv.innerText = explanation;
+                    explanationsContainer.appendChild(explanationDiv);
+                });
+            }
+
+            document.getElementById('question-container').appendChild(explanationsContainer);
+        }
+
+        function updateButtons() {
+            document.getElementById('prev-btn').disabled = currentQuestionIndex === 0;
+            document.getElementById('next-btn').style.display = currentQuestionIndex === questionsAndAnswers.length - 1 ? 'none' : 'inline';
+            document.getElementById('submit-btn').style.display = currentQuestionIndex === questionsAndAnswers.length - 1 ? 'inline' : 'none';
+        }
+
+        function displayResults() {
+            let correctAnswersCount = 0;
+            questionsAndAnswers.forEach(({ userAnswer, correctAnswer }) => {
+                if (Array.isArray(correctAnswer)) {
+                    if (JSON.stringify(userAnswer?.sort()) === JSON.stringify(correctAnswer.sort())) {
+                        correctAnswersCount++;
+                    }
+                } else {
+                    if (userAnswer === correctAnswer) {
+                        correctAnswersCount++;
+                    }
+                }
+            });
+            document.getElementById('score').innerText = `You scored ${correctAnswersCount} out of ${questionsAndAnswers.length}.`;
+            document.getElementById('feedback').innerText = correctAnswersCount === questionsAndAnswers.length ? 'Great job!' : 'Better luck next time!';
+            document.getElementById('results').style.display = 'block';
+        }
+
+        function displayMainPage() {
+            const questionList = document.getElementById('question-list');
+            questionList.innerHTML = questionsAndAnswers.map((question, index) => `
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Question ${index + 1}
+                    <button type="button" class="btn btn-link btn-sm" onclick="navigateToQuestion(${index})">${question.userAnswer !== undefined ? 'Answered' : 'Not Answered'}</button>
+                </li>
+            `).join("");
+
+            document.getElementById('main-page').style.display = 'block';
+            document.getElementById('question-page').style.display = 'none';
+        }
+
+        function navigateToQuestion(index) {
+            currentQuestionIndex = index;
+            displayQuestion(currentQuestionIndex);
+            updateButtons();
+            document.getElementById('main-page').style.display = 'none';
+            document.getElementById('question-page').style.display = 'block';
+        }
+
+        function updateQuestionStatus() {
+            const questionList = document.getElementById('question-list');
+            const statusButtons = questionList.querySelectorAll('button');
+
+            statusButtons.forEach((button, index) => {
+                button.textContent = questionsAndAnswers[index].userAnswer !== undefined ? 'Answered' : 'Not Answered';
+            });
+        }
+
+        document.getElementById('back-to-main-btn').addEventListener('click', displayMainPage);
+
+        document.getElementById('next-btn').addEventListener('click', () => {
+            displayQuestion(++currentQuestionIndex);
+            updateButtons();
+        });
+
+        document.getElementById('prev-btn').addEventListener('click', () => {
+            displayQuestion(--currentQuestionIndex);
+            updateButtons();
+        });
+
+        document.getElementById('exam-form').addEventListener('submit', (event) => {
+            event.preventDefault();
+            displayResults();
+            document.getElementById('exam-form').style.display = 'none';
+        });
+
+        document.getElementById('retake-btn').addEventListener('click', () => {
+            currentQuestionIndex = 0;
+            questionsAndAnswers.forEach(q => delete q.userAnswer);
+            document.getElementById('results').style.display = 'none';
+            document.getElementById('exam-form').style.display = 'block';
+            displayQuestion(currentQuestionIndex);
+            updateButtons();
+        });
+
+        // Fetch questions and display the main page
+        fetchQuestions();
+    </script>
+</body>
+</html>

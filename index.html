@@ -104,8 +104,8 @@
 
         function displayQuestion(index) {
             const questionContainer = document.getElementById('question-container');
-            const { question, answers, userAnswer } = questionsAndAnswers[index];
-            const isMultiple = Array.isArray(questionsAndAnswers[index].correctAnswer);
+            const { question, answers, userAnswer, correctAnswer } = questionsAndAnswers[index];
+            const isMultiple = Array.isArray(correctAnswer);
             const isAnswered = userAnswer !== undefined;
 
             questionContainer.innerHTML = `
@@ -113,7 +113,7 @@
                 <div id="answers" class="mt-4">
                     ${answers.map((answer, i) => `
                         <div class="form-check">
-                            <input class="form-check-input" type="${isMultiple ? 'checkbox' : 'radio'}" name="answer" id="answer${i}" value="${i}" ${isMultiple ? userAnswer?.includes(i) : userAnswer === i ? 'checked' : ''} ${isAnswered && !isMultiple ? 'disabled' : ''}>
+                            <input class="form-check-input" type="${isMultiple ? 'checkbox' : 'radio'}" name="answer" id="answer${i}" value="${i}" ${isMultiple ? userAnswer?.includes(i) ? 'checked' : '' : userAnswer === i ? 'checked' : ''} ${isAnswered ? 'disabled' : ''}>
                             <label class="form-check-label" for="answer${i}" id="label${i}">
                                 ${answer}
                             </label>
@@ -123,17 +123,7 @@
                 </div>
             `;
 
-            // Disable checkboxes if all options have been selected
-            if (isMultiple && isAnswered) {
-                if (userAnswer.length === questionsAndAnswers[index].correctAnswer.length) {
-                    document.querySelectorAll('input[name="answer"]').forEach(input => input.disabled = true);
-                }
-            }
-
-            if (isAnswered) {
-                // Show explanation
-                showExplanation();
-            } else {
+            if (!isAnswered) {
                 // Add event listener to the inputs to show icons on selection
                 document.querySelectorAll('input[name="answer"]').forEach(input => {
                     input.addEventListener('change', (event) => {
